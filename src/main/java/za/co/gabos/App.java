@@ -14,7 +14,7 @@ public class App {
         db.initializeDatabase();
 
         UserDAO userDao = new UserDAODb(db);
-        User created = userDao.createUser(new User("david@example.com", "secret123"));
+        User created = userDao.createUser(new User("testUser1@gmail.com", "secret123"));
         System.out.println("Saved ID: " + created.getId());
 
         Optional<User> found = userDao.findByEmail("david@example.com");
