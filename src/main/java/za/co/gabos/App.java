@@ -1,8 +1,8 @@
 package za.co.gabos;
 
 import za.co.gabos.persistance.Database;
-import za.co.gabos.persistance.UserDAO;
-import za.co.gabos.persistance.UserDAODb;
+import za.co.gabos.persistance.userPersistance.UserDAO;
+import za.co.gabos.persistance.userPersistance.UserDAODb;
 import za.co.gabos.user.User;
 
 import java.util.Optional;

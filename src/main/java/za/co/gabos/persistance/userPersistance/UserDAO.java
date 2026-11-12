@@ -1,4 +1,4 @@
-package za.co.gabos.persistance;
+package za.co.gabos.persistance.userPersistance;
 import za.co.gabos.user.User;
 
 import java.util.Optional;

@@ -1,9 +1,10 @@
-package za.co.gabos.persistance;
+package za.co.gabos.persistance.userPersistance;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import za.co.gabos.persistance.Database;
 import za.co.gabos.user.User;
 
 import java.io.File;
