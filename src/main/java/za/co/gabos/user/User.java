@@ -11,6 +11,13 @@ public class User {
     private String password;
 
     public User(String email, String password){
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+
+        if (password == null || password.isBlank()){
+            throw new IllegalArgumentException("Password may not be null or empty");
+        }
         this.email = email;
         this.password = password;
     }
@@ -44,6 +51,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    // for testing purposes
+    @Override
+    public String toString(){
+        return this.id + " " + this.email + " " + this.password;
     }
 
 
