@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabos Expense Tracker — Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-body">
+<main class="auth-card">
+    <h1>Gabos Expense Tracker</h1>
+    <p class="subtitle">Sign in with your email to manage your expenses.</p>
+
+    <!-- Thymeleaf error message: only appears if login fails -->
+    <p class="error-banner" th:if="${error}" th:text="${error}">Invalid email address</p>
+
+    <form action="/login" method="post" class="auth-form">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Continue</button>
+    </form>
+
+    <p class="auth-footer">
+        New here? <a href="/register">Create an account</a>
+    </p>
+</main>
+</body>
+</html>
