@@ -2,13 +2,14 @@ package za.co.gabos;
 
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import za.co.gabos.persistance.Database;
 import za.co.gabos.web.routes.Routes;
 
 public class App {
     private final Javalin server;
+    private final Database db = new Database("jdbc:sqlite:expense_tracker.db");
 
     public App() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
@@ -18,16 +19,13 @@ public class App {
 
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(resolver);
-        this.server = Javalin.create(config -> {
-            // 1. Serves files in src/main/resources/public/ at "/"
-            config.staticFiles.add("/public");
 
-            // 2. Connects ctx.render(...) to Thymeleaf templates in src/main/resources/templates/
+        this.server = Javalin.create(config -> {
+            config.staticFiles.add("/public");
             config.fileRenderer(new JavalinThymeleaf(templateEngine));
         });
 
-        // 3. Registers all URL routes (GET /login, POST /login, etc.)
-        Routes.configure(this.server);
+        Routes.configure(this.server, db);
     }
 
     public void start(int port) {
@@ -39,7 +37,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        App app = new App();
-        app.start(5050);
+        new App().start(5050);
     }
 }

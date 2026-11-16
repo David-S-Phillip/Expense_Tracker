@@ -23,7 +23,4 @@ public class Server {
         this.app.stop();
     }
 
-    public static void main(String[] args) {
-        new Server().start(5050);
-    }
 }
